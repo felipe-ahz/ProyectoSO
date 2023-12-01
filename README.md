@@ -1,20 +1,13 @@
-# ProyectoSO
-Tarea 2 de la asignatura de Sistemas Operativos (2023-2).
+# Tarea 2 de la asignatura de Sistemas Operativos (2023-2).
+
+Esta tarea tiene como objetivo principal la aplicación de un filtro de escala de grises a una imagen en formato a color. Para abordar esta tarea, se han desarrollado tres versiones del programa: una secuencial funcional y dos versiones paralelas. En la primera versión paralela, se utiliza la clase thread, mientras que la segunda versión paralela se hace uso de la API OpenMP.
 
 ## Requisitos 
-- Sistema operativo: Linux
-- Compilador: g++
-- Biblioteca: OpenCV
+    - Sistema operativo: Linux
+    - Compilador: g++
+    - Biblioteca: OpenCV
 
-## Primer programa; Filtro de Imagen Secuencial
-Este primer programa implementa un filtro de escala de grises en una imagen utilizando el método de luminosidad. La imagen de entrada se carga desde el archivo "Zampedri.png" (que está dentro del directorio) y posteriormente se guarda como "grayscale_sequential.jpg" después de aplicar el filtro de manera secuencial.
-
-¿Cómo lo ejecutamos?, con los siguientes dos comandos:
-
-1. g++ -o FiltroImagen_Secuencial FiltroImagen_Secuencial.cpp $(pkg-config --cflags --libs opencv4)
-
-2. ./FiltroImagen_Secuencial
-
-y luego de esos dos comandos mencionados, se nos entregaría el tiempo de ejecución (por ej; 14ms) 
-
-## Segundo programa; Filtro de Imagen Paralelo
+## Enlaces relacionados (READMEs)
+    - [README del programa con Filtro de Imagen Secuencial](./Filtro-Secuencial/Secuencial.md)
+    - [README del programa con Filtro de Imagen Paralela (Thread)](./Filtro-Paral-Thread/Thread.md)
+    - [README del programa con Filtro de Imagen Paralela (OpenMP)](./Filtro-Paral-OpenMP/OpenMP.md)
