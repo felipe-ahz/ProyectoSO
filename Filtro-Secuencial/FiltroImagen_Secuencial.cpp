@@ -6,16 +6,29 @@ using namespace cv;
 using namespace std;
 using namespace chrono;
 
-int main() {
-    // Medir el tiempo de inicio
-    auto start = high_resolution_clock::now();
-
-    Mat image = imread("Zampedri.png", IMREAD_COLOR);
-
-    if (image.empty()) {
-        cout << "Error al cargar la imagen." << endl;
+int main(int argc, char** argv) {
+    if (argc != 3) {
+        cout << "Uso: " << argv[0] << " <imagen_entrada> <imagen_salida>" << endl;
         return -1;
     }
+
+    string inputImageName = argv[1];
+    string outputImageName = argv[2];
+
+    auto start = high_resolution_clock::now();
+    cout << "Cargando Imagen..." << endl;
+
+    Mat image = imread(inputImageName, IMREAD_COLOR);
+
+    if (image.empty()) {
+        cout << "Error al cargar la imagen desde " << inputImageName << endl;
+        return -1;
+    }else{
+        cout << "Imagen Cargada" << endl;
+    }
+
+    cout << "Filas: " << image.rows << "	Columnas: " << image.cols << endl;
+    cout << "Comenzando conversion..." << endl;
 
     // Leer imagen y aplicar filtro
     for (int r = 0; r < image.rows; r++) {
@@ -30,12 +43,11 @@ int main() {
     // Medir el tiempo de finalización
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
-
-    // Mostrar el tiempo de ejecución en milisegundos
+    cout << "Finalizando..." << endl;
     cout << "Tiempo de ejecucion: " << duration.count() << " ms" << endl;
 
-    // Guardar la imagen en escala de grises (puedes ajustar el nombre del archivo)
-    imwrite("Zampedri_Sequential.jpg", image);
+    // Guardar la imagen en escala de grises con el nombre proporcionado por el usuario
+    imwrite(outputImageName, image);
 
     return 0;
 }

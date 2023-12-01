@@ -19,20 +19,33 @@ void processSection(Mat& image, int startRow, int endRow) {
     }
 }
 
-int main() {
-    auto start = high_resolution_clock::now();
+int main(int argc, char** argv) {
+    if (argc != 4) {
+        cout << "Uso: " << argv[0] << " <imagen_entrada> <imagen_salida> <numero_hebras>" << endl;
+        return -1;
+    }
 
-    Mat image = imread("Zampedri.png", IMREAD_COLOR);
+    string inputImageName = argv[1];
+    string outputImageName = argv[2];
+    int numThreads = atoi(argv[3]);
+
+    auto start = high_resolution_clock::now();
+    cout << "Cargando Imagen..." << endl;
+
+    Mat image = imread(inputImageName, IMREAD_COLOR);
 
     if (image.empty()) {
         cout << "Error al cargar la imagen." << endl;
         return -1;
+    } else {
+        cout << "Imagen Cargada" << endl;
     }
 
-    const int numThreads = 4;
+    cout << "Filas: " << image.rows << "        Columnas: " << image.cols << endl;
+    cout << "Comenzando Conversion..." << endl;
 
     // Vector para almacenar los threads
-    vector<thread> threads;
+    vector<thread> threadList;
 
     // Calcular la cantidad de filas por thread
     int rowsPerThread = image.rows / numThreads;
@@ -42,19 +55,20 @@ int main() {
         int startRow = i * rowsPerThread;
         int endRow = (i == numThreads - 1) ? image.rows : (i + 1) * rowsPerThread;
 
-        threads.emplace_back(processSection, ref(image), startRow, endRow);
+        threadList.emplace_back(processSection, ref(image), startRow, endRow);
     }
 
-    for (auto& t : threads) {
+    for (auto& t : threadList) {
         t.join();
     }
 
     // Medir el tiempo de finalización
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
+    cout << "Finalizando..." << endl;
     cout << "Tiempo de ejecucion: " << duration.count() << " ms" << endl;
 
-    imwrite("Zampedri_Paralel_Thread.jpg", image);
+    imwrite(outputImageName, image);
 
     return 0;
 }
