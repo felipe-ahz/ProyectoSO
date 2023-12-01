@@ -35,7 +35,7 @@ int main() {
     cout << "Tiempo de ejecucion: " << duration.count() << " ms" << endl;
 
     // Guardar la imagen en escala de grises (puedes ajustar el nombre del archivo)
-    imwrite("grayscale_sequential.jpg", image);
+    imwrite("Zampedri_Sequential.jpg", image);
 
     return 0;
 }
