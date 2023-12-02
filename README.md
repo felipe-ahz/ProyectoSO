@@ -11,4 +11,4 @@ Esta tarea tiene como objetivo principal la aplicación de un filtro de escala d
 - [README del programa con Filtro de Imagen Paralela (Thread)](./Filtro-Paral-Thread/Thread.md)
 - [README del programa con Filtro de Imagen Paralela (OpenMP)](./Filtro-Paral-OpenMP/OpenMP.md)
 
-⌨️ with ❤️ by @felipe-ahz and @NacsonLefiguala
+⌨️ with ❤️ by [@felipe-ahz](https://github.com/felipe-ahz) and [@NacsonLefiguala](https://github.com/NacsonLefiguala) 
