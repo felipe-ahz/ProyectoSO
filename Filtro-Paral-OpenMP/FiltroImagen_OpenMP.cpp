@@ -18,17 +18,35 @@ void processSectionOpenMP(Mat& image, int startRow, int endRow) {
     }
 }
 
-int main() {
-    auto start = high_resolution_clock::now();
+int main(int argc, char** argv) {
+    if (argc != 3) {
+        cout << "Uso: " << argv[0] << " <imagen_entrada> <numero_hebras>" << endl;
+        return -1;
+    }
 
-    Mat image = imread("Zampedri.png", IMREAD_COLOR);
+    string inputImageName = argv[1];
+    int numThreads = atoi(argv[2]);
+
+    auto startLoading = high_resolution_clock::now();
+    cout << "Cargando Imagen..." << endl;
+
+    Mat image = imread(inputImageName, IMREAD_COLOR);
 
     if (image.empty()) {
         cout << "Error al cargar la imagen." << endl;
         return -1;
+    } else {
+        cout << "Imagen Cargada" << endl;
     }
 
-    const int numThreads = 4;
+    auto stopLoading = high_resolution_clock::now();
+    auto loadingDuration = duration_cast<milliseconds>(stopLoading - startLoading);
+    cout << "Tiempo de carga de imagen: " << loadingDuration.count() << " ms" << endl;
+
+    cout << "Filas: " << image.rows << "        Columnas: " << image.cols << endl;
+    cout << "Comenzando Conversion..." << endl;
+
+    auto start = high_resolution_clock::now();
 
     // Calcular la cantidad de filas por thread
     int rowsPerThread = image.rows / numThreads;
@@ -37,6 +55,7 @@ int main() {
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
+    cout << "Finalizando Conversion..." << endl;
     cout << "Tiempo de ejecucion: " << duration.count() << " ms" << endl;
 
     imwrite("Zampedri_Paralel_OpenMP.jpg", image);

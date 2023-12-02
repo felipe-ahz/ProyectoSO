@@ -8,6 +8,6 @@ g++ -o FiltroImagen_Paralel_Thread FiltroImagen_Paralel_Thread.cpp $(pkg-config 
 2. Ejecutar el programa ya compilado: 
 ./FiltroImagen_Paralel_Thread
 
-Después de ejecutar estos comandos, se mostrará el tiempo de ejecución en milisegundos.
+Tras la ejecución de estos comandos, la imagen se cargará, revelando información sobre sus dimensiones en términos de filas y columnas. Posteriormente, se llevará a cabo la conversión aplicando el filtro de escala de grises. Finalmente, se exhibirá el tiempo de ejecución, representado en milisegundos (por ej; 14ms).
 La imagen filtrada se guardará como "Zampedri_Paralel_Thread.jpg".
 
