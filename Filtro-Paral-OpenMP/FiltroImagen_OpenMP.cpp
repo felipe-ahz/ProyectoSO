@@ -25,7 +25,6 @@ int main(int argc, char** argv) {
     }
 
     string inputImageName = argv[1];
-    int numThreads = atoi(argv[2]);
 
     auto startLoading = high_resolution_clock::now();
     cout << "Cargando Imagen..." << endl;
@@ -47,9 +46,6 @@ int main(int argc, char** argv) {
     cout << "Comenzando Conversion..." << endl;
 
     auto start = high_resolution_clock::now();
-
-    // Calcular la cantidad de filas por thread
-    int rowsPerThread = image.rows / numThreads;
 
     processSectionOpenMP(image, 0, image.rows);
 

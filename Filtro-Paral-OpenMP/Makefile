@@ -1,6 +1,6 @@
 CC = g++
-CFLAGS = `pkg-config --cflags --libs opencv4`
-LIBS =-Wall -std=c++11 -fopenmp -I /usr/include/opencv4
+LIBS = `pkg-config --cflags --libs opencv4`
+CFLAGS = -Wall -std=c++11 -fopenmp
 
 all: FiltroImagen_OpenMP
 
