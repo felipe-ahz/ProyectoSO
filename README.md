@@ -1,5 +1,5 @@
 # Tarea 2 de la asignatura de Sistemas Operativos (2023-2).
-Esta tarea tiene como objetivo principal la aplicación de un filtro de escala de grises a una imagen en formato a color. Para abordar esta tarea, se han desarrollado tres versiones del programa: una secuencial funcional y dos versiones paralelas. En la primera versión paralela, se utiliza la clase thread, mientras que la segunda versión paralela se hace uso de la API OpenMP.
+Esta tarea tiene como objetivo la aplicación de un filtro de escala de grises a una imagen en formato a color. Para abordar esta tarea, se han desarrollado tres versiones del programa, cada una ubicada en una carpeta distinta dentro de este repositorio. Las versiones incluyen una secuencial funcional y dos versiones paralelas. En la primera versión paralela, se utiliza la clase thread, mientras que en la segunda versión paralela se hace uso de la API OpenMP.
 
 ## Requisitos 
 - Sistema operativo: Linux

@@ -1,16 +1,14 @@
 ## Tercer Programa: Filtro de Imagen en Versión Paralela con OpenMP.
-Este tercer programa muestra una versión paralela del filtro de escala de grises utilizando la API OpenMP en C++. El método de luminosidad se aplica a una imagen de entrada cargada desde el archivo "Zampedri.png". La imagen filtrada se guarda como "Zampedri_Paralel_OpenMP.jpg" después de aplicar el filtro de manera paralela mediante OpenMP.
+Este tercer programa muestra una versión paralela del filtro de escala de grises utilizando la API OpenMP en C++. 
 
 ### Instrucciones de ejecución
-1. Compilar el código utilizando el siguiente comando en la terminal:
-g++ -o FiltroImagen_Paralel_OpenMP FiltroImagen_Paralel_OpenMP.cpp $(pkg-config --cflags --libs opencv4) -fopenmp
+1. Compilar el código utilizando el siguiente comando en la terminal: make
 
 2. Ejecutar el programa ya compilado: 
-./FiltroImagen_Paralel_OpenMP
+./FiltroImagen_OpenMP ../Zampedri.png ZampedriGris.png
+
+- "../Zampedri.png" es para indicar que la imagen que le aplicaremos el filtro está un directorio atrás, y el "ZampedriGris.png" es el nombre que le damos para exportar la imagen final, ese fue solo un nombre de ejemplo, usted puede dejar el nombre que más le acomode. 
 
 Tras la ejecución de estos comandos, la imagen se cargará, revelando información sobre sus dimensiones en términos de filas y columnas. Posteriormente, se llevará a cabo la conversión aplicando el filtro de escala de grises. Finalmente, se exhibirá el tiempo de ejecución, representado en milisegundos (por ej; 14ms).
-La imagen filtrada se guardará como "Zampedri_Paralel_OpenMP.jpg".
-
-### Consideración
-- La opción -fopenmp es necesaria durante la compilación para habilitar el soporte de OpenMP.
+La imagen con el filtro aplicado se guardará como se haya indicado al final del paso n°2.
 
