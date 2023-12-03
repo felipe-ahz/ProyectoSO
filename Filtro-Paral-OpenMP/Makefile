@@ -1,15 +1,12 @@
-CXX = g++
-CXXFLAGS = -Wall -std=c++11
-LDFLAGS = -fopenmp
-LIBS = `pkg-config --cflags --libs opencv4`
+CC = g++
+CFLAGS = `pkg-config --cflags --libs opencv4`
+LIBS =-Wall -std=c++11 -fopenmp -I /usr/include/opencv4
 
-TARGET = Paralel_OpenMP
-SOURCE = Paralel_OpenMP.cpp
+all: FiltroImagen_OpenMP
 
-all: $(TARGET)
-
-$(TARGET): $(SOURCE)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+FiltroImagen_OpenMP: FiltroImagen_OpenMP.cpp
+	$(CC) $(CFLAGS) -o FiltroImagen_OpenMP FiltroImagen_OpenMP.cpp $(LIBS)
 
 clean:
-	rm -f $(TARGET)
+	rm -f FiltroImagen_OpenMP
+
