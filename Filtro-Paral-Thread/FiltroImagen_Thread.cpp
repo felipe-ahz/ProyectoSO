@@ -69,6 +69,5 @@ int main(int argc, char** argv) {
     cout << "Tiempo de ejecucion: " << duration.count() << " ms" << endl;
 
     imwrite(outputImageName, image);
-
     return 0;
 }

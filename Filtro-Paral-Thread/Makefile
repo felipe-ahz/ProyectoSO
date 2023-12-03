@@ -1,14 +1,9 @@
-CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra -pthread
-LDFLAGS = $(shell pkg-config --cflags --libs opencv4)
+CC = g++
+CFLAGS = -Wall -std=c++11
+LIBS = `pkg-config --cflags --libs opencv4`
 
-TARGET = FiltroImagen_Paralelo_Thread
-SRC = FiltroImagen_Paralelo_Thread.cpp
-
-all: $(TARGET)
-
-$(TARGET): $(SRC)
-    $(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
-
+all: FiltroImagen_Thread
+FiltroImagen_Thread: FiltroImagen_Thread.cpp
+	$(CC) $(CFLAGS) -o FiltroImagen_Thread FiltroImagen_Thread.cpp $(LIBS)
 clean:
-    rm -f $(TARGET)
+	rm -f FiltroImagen_Thread
